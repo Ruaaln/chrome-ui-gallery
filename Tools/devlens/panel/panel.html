@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DevLens — Full Panel</title>
+  <link rel="stylesheet" href="panel.css">
+</head>
+<body data-theme="dark">
+
+  <!-- ── Toolbar ────────────────────────────────────────────────────────── -->
+  <header class="dl-toolbar">
+    <div class="dl-toolbar-left">
+      <span class="dl-logo">⬡ DevLens</span>
+      <span class="dl-url" id="dl-page-url">—</span>
+    </div>
+    <div class="dl-toolbar-right">
+      <button class="dl-tool-btn" id="btn-clear"  title="Clear all logs">🗑 Clear</button>
+      <button class="dl-tool-btn" id="btn-export" title="Export logs as JSON">⬇ Export</button>
+      <button class="dl-tool-btn" id="btn-pause"  title="Pause capturing">⏸ Pause</button>
+      <label class="dl-search-wrap">
+        <span>🔍</span>
+        <input type="text" id="dl-search" placeholder="Filter logs…" autocomplete="off" spellcheck="false">
+      </label>
+      <button class="dl-tool-btn" id="btn-theme" title="Toggle theme">☽</button>
+    </div>
+  </header>
+
+  <!-- ── Tab bar ────────────────────────────────────────────────────────── -->
+  <nav class="dl-tabs">
+    <button class="dl-tab active" data-tab="all">All <span class="dl-tab-count" id="cnt-all">0</span></button>
+    <button class="dl-tab" data-tab="error">Errors <span class="dl-tab-count dl-tc-error" id="cnt-error">0</span></button>
+    <button class="dl-tab" data-tab="warn">Warnings <span class="dl-tab-count dl-tc-warn" id="cnt-warn">0</span></button>
+    <button class="dl-tab" data-tab="log">Console <span class="dl-tab-count dl-tc-log" id="cnt-log">0</span></button>
+    <button class="dl-tab" data-tab="network">Network <span class="dl-tab-count dl-tc-net" id="cnt-net">0</span></button>
+  </nav>
+
+  <!-- ── Log table ──────────────────────────────────────────────────────── -->
+  <main class="dl-main">
+    <table class="dl-table">
+      <thead>
+        <tr>
+          <th class="dl-col-level">Level</th>
+          <th class="dl-col-time">Time</th>
+          <th class="dl-col-source">Source</th>
+          <th class="dl-col-msg">Message / URL</th>
+          <th class="dl-col-meta">Status / Size</th>
+        </tr>
+      </thead>
+      <tbody id="dl-log-body"></tbody>
+    </table>
+    <div class="dl-empty" id="dl-empty">No entries yet — logs will appear here as the page runs.</div>
+  </main>
+
+  <!-- ── Detail drawer ─────────────────────────────────────────────────── -->
+  <aside class="dl-detail" id="dl-detail">
+    <div class="dl-detail-header">
+      <span id="dl-detail-title">Entry Detail</span>
+      <button id="dl-detail-close">✕</button>
+    </div>
+    <pre id="dl-detail-body"></pre>
+  </aside>
+
+  <!-- ── Status bar ────────────────────────────────────────────────────── -->
+  <footer class="dl-statusbar">
+    <span id="dl-status-count">0 entries</span>
+    <span id="dl-status-errors" class="dl-status-err"></span>
+    <span class="dl-status-sep">•</span>
+    <span id="dl-status-paused"></span>
+    <span class="dl-status-brand">DevLens v1.0.1</span>
+  </footer>
+
+  <script src="panel.js"></script>
+</body>
+</html>
