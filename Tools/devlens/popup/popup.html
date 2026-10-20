@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>DevLens</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header class="pp-header">
+    <span class="pp-logo">⬡ DevLens</span>
+    <span class="pp-version">v1.0.1</span>
+  </header>
+
+  <div class="pp-open-btn-wrap">
+    <button class="pp-open-panel" id="pp-open">⛶ Open Full Panel</button>
+  </div>
+
+  <section class="pp-section">
+    <div class="pp-row">
+      <label class="pp-label">HUD Overlay</label>
+      <label class="pp-toggle">
+        <input type="checkbox" id="tog-hud" checked>
+        <span class="pp-slider"></span>
+      </label>
+    </div>
+  </section>
+
+  <section class="pp-section">
+    <div class="pp-section-title">Position</div>
+    <div class="pp-grid2">
+      <button class="pp-pos-btn" data-pos="top-left">↖ Top Left</button>
+      <button class="pp-pos-btn" data-pos="top-right">↗ Top Right</button>
+      <button class="pp-pos-btn" data-pos="bottom-left">↙ Bottom Left</button>
+      <button class="pp-pos-btn active" data-pos="bottom-right">↘ Bottom Right</button>
+    </div>
+  </section>
+
+  <section class="pp-section">
+    <div class="pp-section-title">Theme</div>
+    <div class="pp-grid2">
+      <button class="pp-theme-btn active" data-theme="dark">☽ Dark</button>
+      <button class="pp-theme-btn" data-theme="light">☀ Light</button>
+    </div>
+  </section>
+
+  <section class="pp-section">
+    <div class="pp-row">
+      <label class="pp-label">Opacity</label>
+      <span class="pp-opacity-val" id="opacity-val">92%</span>
+    </div>
+    <input type="range" id="pp-opacity" min="40" max="100" value="92" class="pp-range">
+  </section>
+
+  <section class="pp-section">
+    <div class="pp-section-title">Show in HUD</div>
+    <div class="pp-checks">
+      <label><input type="checkbox" id="chk-errors"  checked> Errors</label>
+      <label><input type="checkbox" id="chk-warns"   checked> Warnings</label>
+      <label><input type="checkbox" id="chk-logs"    checked> Logs</label>
+      <label><input type="checkbox" id="chk-network" checked> Network</label>
+    </div>
+  </section>
+
+  <div class="pp-footer-actions">
+    <button class="pp-action-btn" id="pp-clear">🗑 Clear Logs</button>
+  </div>
+
+  <footer class="pp-footer">
+    Developer Overlay · Chrome Extension
+  </footer>
+
+  <script src="popup.js"></script>
+</body>
+</html>
