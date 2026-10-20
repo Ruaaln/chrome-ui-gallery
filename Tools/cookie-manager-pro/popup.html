@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cookie Manager Pro</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="popup">
+  <div class="bg">
+    <span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span>
+  </div>
+
+  <main class="card glass">
+    <header class="top">
+      <div>
+        <h1 data-i18n="title"></h1>
+        <p id="site" class="site">—</p>
+      </div>
+      <div class="top-actions">
+        <button id="themeBtn" class="icon-btn" data-i18n-title="theme">◐</button>
+        <button id="settingsBtn" class="icon-btn" data-i18n-title="settings">⚙</button>
+      </div>
+    </header>
+
+    <div class="stats glass-inner">
+      <div><span id="count" class="num">0</span><small data-i18n="count"></small></div>
+      <div><span id="third" class="num">0</span><small data-i18n="thirdParty"></small></div>
+    </div>
+
+    <nav class="tabs glass-inner">
+      <button class="tab active" data-tab="cookies" data-i18n="tabCookies"></button>
+      <button class="tab" data-tab="profiles" data-i18n="tabProfiles"></button>
+    </nav>
+
+    <section id="panel-cookies" class="panel">
+      <div class="toolbar">
+        <input id="search" class="input" data-i18n-ph="search" placeholder="" />
+        <div class="seg">
+          <button id="scopeCurrent" class="seg-btn active" data-i18n="scopeCurrent"></button>
+          <button id="scopeAll" class="seg-btn" data-i18n="scopeAll"></button>
+        </div>
+      </div>
+      <ul id="list" class="list"></ul>
+      <div class="row3">
+        <button id="addBtn" class="btn glass-btn" data-i18n="add"></button>
+        <button id="exportBtn" class="btn glass-btn" data-i18n="export"></button>
+        <label class="btn glass-btn file-label"><span data-i18n="import"></span>
+          <input id="importFile" type="file" accept="application/json" hidden />
+        </label>
+      </div>
+    </section>
+
+    <section id="panel-profiles" class="panel hidden">
+      <div class="profile-create">
+        <input id="profileName" class="input" data-i18n-ph="profileName" placeholder="" />
+        <button id="saveProfileBtn" class="btn glass-btn primary" data-i18n="saveProfile"></button>
+      </div>
+      <ul id="profiles" class="list"></ul>
+    </section>
+
+    <div class="bottom">
+      <button id="deepBtn" class="btn deep-btn" data-i18n="deepClear"></button>
+      <div class="row2">
+        <button id="clearBtn" class="btn glass-btn danger" data-i18n="clearAll"></button>
+        <button id="refreshBtn" class="btn glass-btn primary" data-i18n="refresh"></button>
+      </div>
+      <p id="status" class="status"></p>
+    </div>
+  </main>
+
+  <dialog id="editDlg" class="dlg">
+    <h3 id="dlgTitle"></h3>
+    <div class="form">
+      <label class="field"><span data-i18n="name"></span><input id="f_name" class="input" /></label>
+      <label class="field"><span data-i18n="value"></span><textarea id="f_value" class="input area"></textarea></label>
+      <div class="grid2">
+        <label class="field"><span data-i18n="domain"></span><input id="f_domain" class="input" /></label>
+        <label class="field"><span data-i18n="path"></span><input id="f_path" class="input" value="/" /></label>
+      </div>
+      <div class="grid2">
+        <label class="field"><span data-i18n="expires"></span><input id="f_days" type="number" min="0" class="input" value="30" /></label>
+        <label class="field"><span>SameSite</span>
+          <select id="f_samesite" class="input">
+            <option value="unspecified">unspecified</option>
+            <option value="lax">lax</option>
+            <option value="strict">strict</option>
+            <option value="no_restriction">no_restriction</option>
+          </select>
+        </label>
+      </div>
+      <div class="checks">
+        <label><input type="checkbox" id="f_session" /><span data-i18n="session"></span></label>
+        <label><input type="checkbox" id="f_secure" /><span>Secure</span></label>
+        <label><input type="checkbox" id="f_httponly" /><span>HttpOnly</span></label>
+      </div>
+    </div>
+    <div class="dlg-actions">
+      <button id="dlgCancel" class="btn glass-btn" data-i18n="cancel"></button>
+      <button id="dlgSave" class="btn glass-btn primary" data-i18n="save"></button>
+    </div>
+  </dialog>
+
+  <script src="common.js"></script>
+  <script src="i18n.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

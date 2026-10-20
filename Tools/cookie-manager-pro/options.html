@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cookie Manager Pro</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="options">
+  <div class="bg">
+    <span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span>
+  </div>
+
+  <main class="page">
+    <header class="page-head">
+      <h1 data-i18n="title"></h1>
+      <p class="muted" data-i18n="settings"></p>
+    </header>
+
+    <section class="card glass section">
+      <label class="field"><span data-i18n="language"></span>
+        <select id="language" class="input"></select>
+      </label>
+      <label class="field"><span data-i18n="theme"></span>
+        <select id="theme" class="input">
+          <option value="system" data-i18n="themeSystem"></option>
+          <option value="dark" data-i18n="themeDark"></option>
+          <option value="light" data-i18n="themeLight"></option>
+        </select>
+      </label>
+    </section>
+
+    <section class="card glass section">
+      <label class="field"><span data-i18n="autoClear"></span>
+        <select id="autoMode" class="input">
+          <option value="off" data-i18n="autoOff"></option>
+          <option value="close" data-i18n="autoClose"></option>
+          <option value="listOnly" data-i18n="autoListOnly"></option>
+        </select>
+      </label>
+      <label class="check"><input type="checkbox" id="autoStartup" /><span data-i18n="autoStartup"></span></label>
+      <div class="grid2">
+        <label class="field"><span data-i18n="whitelist"></span>
+          <textarea id="whitelist" class="input area"></textarea>
+        </label>
+        <label class="field"><span data-i18n="blacklist"></span>
+          <textarea id="blacklist" class="input area"></textarea>
+        </label>
+      </div>
+      <p class="hint" data-i18n="listHint"></p>
+    </section>
+
+    <section class="card glass section stat-row">
+      <div>
+        <span id="statsTotal" class="big">0</span>
+        <small data-i18n="statsTotal"></small>
+      </div>
+      <p class="hint" data-i18n="shortcut"></p>
+    </section>
+
+    <div class="savebar">
+      <p id="status" class="status"></p>
+      <button id="saveBtn" class="btn glass-btn primary" data-i18n="save"></button>
+    </div>
+  </main>
+
+  <script src="common.js"></script>
+  <script src="i18n.js"></script>
+  <script src="options.js"></script>
+</body>
+</html>
