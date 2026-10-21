@@ -14,9 +14,7 @@ const search = document.getElementById("search");
 const categoryButtons = Array.from(document.querySelectorAll("[data-category]"));
 const platformOptions = document.querySelector(".platform-options");
 const state = {category:"all",platform:"all",style:"all",sort:"name",query:""};
-const page = document.body.dataset.page || "gallery";
-const LIMIT = Number(grid && grid.dataset.limit) || 6;
-const allLink = document.getElementById("view-all");
+
 const styleFilter=document.getElementById("style-filter");
 const sortFilter=document.getElementById("sort-filter");
 let projects = [];
@@ -199,6 +197,10 @@ search?.addEventListener("input",()=>{state.query=search.value;render()});
 styleFilter?.addEventListener("change",()=>{state.style=styleFilter.value;render()});
 sortFilter?.addEventListener("change",()=>{state.sort=sortFilter.value;render()});
 document.getElementById("reset-advanced")?.addEventListener("click",resetFilters);
+search.addEventListener("input",()=>{state.query=search.value;render()});
+styleFilter.addEventListener("change",()=>{state.style=styleFilter.value;render()});
+sortFilter.addEventListener("change",()=>{state.sort=sortFilter.value;render()});
+document.getElementById("reset-advanced").addEventListener("click",resetFilters);
 function resetFilters(){
   state.category="all";state.platform="all";state.style="all";state.sort="name";state.query="";
   search.value="";styleFilter.value="all";sortFilter.value="name";
@@ -208,6 +210,9 @@ function resetFilters(){
 document.getElementById("clear-filters")?.addEventListener("click",()=>{
   resetFilters();
   search?.focus();
+document.getElementById("clear-filters").addEventListener("click",()=>{
+  resetFilters();
+  search.focus();
 });
 document.addEventListener("keydown",event=>{
   const active=document.activeElement;
@@ -267,6 +272,7 @@ async function loadCatalog() {
   }
 }
 if(grid)loadCatalog();
+loadCatalog();
 
 /* GitHub public contributor endpoint; never fabricate identities or counts. */
 async function loadContributors(){

@@ -1,0 +1,25 @@
+{
+  "name": "DevLens",
+  "description": "Floating developer HUD for page console logs, JavaScript errors and fetch/XHR network requests, plus a searchable exportable diagnostics panel.",
+  "platform": "browser",
+  "style": "Developer Tool",
+  "tags": [
+    "Developer",
+    "Console",
+    "Errors",
+    "Network",
+    "HUD",
+    "Debugging"
+  ],
+  "icon": "DL",
+  "palette": [
+    "#0d0e15",
+    "#6366f1",
+    "#34d399"
+  ],
+  "author": {
+    "name": "Ruaaln",
+    "url": "https://github.com/RuslanSharifov"
+  },
+  "preview": "preview.png"
+}

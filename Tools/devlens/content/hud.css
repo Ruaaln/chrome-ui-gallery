@@ -1,0 +1,199 @@
+/* ── DevLens HUD ─────────────────────────────────────────────────────────── */
+
+#__devlens_hud__ {
+  position: fixed !important;
+  z-index: 2147483647 !important;
+  width: 310px !important;
+  max-height: 260px !important;
+  border-radius: 12px !important;
+  font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', ui-monospace, monospace !important;
+  font-size: 11.5px !important;
+  line-height: 1.4 !important;
+  pointer-events: auto !important;
+  user-select: none !important;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.45), 0 0 0 1px rgba(255,255,255,0.07) !important;
+  transition: opacity 0.2s ease !important;
+  overflow: hidden !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+/* ── Dark theme (default) ─────────────────────────────────────────────────── */
+#__devlens_hud__[data-theme="dark"] {
+  background: rgba(13, 14, 21, 0.96) !important;
+  color: #e0e4ef !important;
+  border: 1px solid rgba(99, 102, 241, 0.35) !important;
+}
+
+/* ── Light theme ──────────────────────────────────────────────────────────── */
+#__devlens_hud__[data-theme="light"] {
+  background: rgba(250, 250, 255, 0.97) !important;
+  color: #1e1e2e !important;
+  border: 1px solid rgba(99, 102, 241, 0.3) !important;
+}
+
+/* ── Header ───────────────────────────────────────────────────────────────── */
+.dl-hud-header {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 7px 10px !important;
+  cursor: move !important;
+  flex-shrink: 0 !important;
+}
+
+#__devlens_hud__[data-theme="dark"] .dl-hud-header {
+  background: rgba(99, 102, 241, 0.12) !important;
+  border-bottom: 1px solid rgba(99, 102, 241, 0.2) !important;
+}
+
+#__devlens_hud__[data-theme="light"] .dl-hud-header {
+  background: rgba(99, 102, 241, 0.07) !important;
+  border-bottom: 1px solid rgba(99, 102, 241, 0.15) !important;
+}
+
+.dl-logo {
+  font-weight: 700 !important;
+  font-size: 12px !important;
+  color: #818cf8 !important;
+  letter-spacing: 0.03em !important;
+}
+
+.dl-hud-controls {
+  display: flex !important;
+  gap: 4px !important;
+}
+
+.dl-btn {
+  background: none !important;
+  border: 1px solid transparent !important;
+  border-radius: 5px !important;
+  width: 22px !important;
+  height: 22px !important;
+  cursor: pointer !important;
+  font-size: 11px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 !important;
+  transition: background 0.15s, border-color 0.15s !important;
+  line-height: 1 !important;
+}
+
+#__devlens_hud__[data-theme="dark"] .dl-btn { color: #94a3b8 !important; }
+#__devlens_hud__[data-theme="dark"] .dl-btn:hover { background: rgba(99,102,241,0.2) !important; border-color: rgba(99,102,241,0.3) !important; color: #e0e4ef !important; }
+#__devlens_hud__[data-theme="light"] .dl-btn { color: #64748b !important; }
+#__devlens_hud__[data-theme="light"] .dl-btn:hover { background: rgba(99,102,241,0.1) !important; border-color: rgba(99,102,241,0.25) !important; color: #1e1e2e !important; }
+
+#__devlens_hud__.dl-pinned .dl-pin { color: #818cf8 !important; }
+
+/* ── Badges ───────────────────────────────────────────────────────────────── */
+.dl-badges {
+  display: flex !important;
+  gap: 6px !important;
+  padding: 6px 10px !important;
+  flex-shrink: 0 !important;
+}
+
+.dl-badge {
+  display: flex !important;
+  align-items: center !important;
+  gap: 3px !important;
+  padding: 2px 7px !important;
+  border-radius: 20px !important;
+  font-size: 10.5px !important;
+  font-weight: 600 !important;
+  cursor: default !important;
+}
+
+#__devlens_hud__[data-theme="dark"] .dl-badge { background: rgba(255,255,255,0.05) !important; }
+#__devlens_hud__[data-theme="light"] .dl-badge { background: rgba(0,0,0,0.05) !important; }
+
+.dl-badge-error  { color: #f87171 !important; }
+.dl-badge-warn   { color: #fbbf24 !important; }
+.dl-badge-log    { color: #60a5fa !important; }
+.dl-badge-net    { color: #34d399 !important; }
+
+.dl-badge b { min-width: 12px !important; display: inline-block !important; }
+
+/* Error pulse */
+#__devlens_hud__.dl-has-error .dl-badge-error {
+  animation: dl-pulse 1.5s ease infinite !important;
+}
+@keyframes dl-pulse {
+  0%, 100% { background: rgba(248,113,113,0.1) !important; }
+  50%       { background: rgba(248,113,113,0.25) !important; }
+}
+
+/* ── Mini log ─────────────────────────────────────────────────────────────── */
+.dl-mini-log {
+  padding: 4px 10px 6px !important;
+  overflow-y: auto !important;
+  flex: 1 !important;
+  cursor: pointer !important;
+}
+
+.dl-mini-row {
+  padding: 2px 0 !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  font-size: 10.5px !important;
+  opacity: 0.85 !important;
+}
+
+.dl-mini-row.dl-level-error   { color: #f87171 !important; }
+.dl-mini-row.dl-level-warn    { color: #fbbf24 !important; }
+.dl-mini-row.dl-level-log     { color: #93c5fd !important; }
+.dl-mini-row.dl-level-info    { color: #93c5fd !important; }
+.dl-mini-row.dl-level-done    { color: #34d399 !important; }
+.dl-mini-row.dl-level-start   { color: #94a3b8 !important; }
+
+#__devlens_hud__[data-theme="light"] .dl-mini-row.dl-level-error { color: #dc2626 !important; }
+#__devlens_hud__[data-theme="light"] .dl-mini-row.dl-level-warn  { color: #d97706 !important; }
+#__devlens_hud__[data-theme="light"] .dl-mini-row.dl-level-log   { color: #2563eb !important; }
+#__devlens_hud__[data-theme="light"] .dl-mini-row.dl-level-done  { color: #059669 !important; }
+
+/* ── Minimized pill ───────────────────────────────────────────────────────── */
+#__devlens_pill__ {
+  position: fixed !important;
+  z-index: 2147483647 !important;
+  bottom: 16px !important;
+  right: 16px !important;
+  background: rgba(13, 14, 21, 0.93) !important;
+  color: #818cf8 !important;
+  border: 1px solid rgba(99,102,241,0.35) !important;
+  border-radius: 20px !important;
+  padding: 5px 12px !important;
+  font-family: 'JetBrains Mono', ui-monospace, monospace !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  cursor: pointer !important;
+  display: none !important;
+  align-items: center !important;
+  gap: 5px !important;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.4) !important;
+  pointer-events: auto !important;
+  transition: background 0.15s !important;
+}
+
+#__devlens_pill__[data-theme="light"] {
+  background: rgba(250,250,255,0.97) !important;
+  color: #6366f1 !important;
+}
+
+#__devlens_pill__:hover {
+  background: rgba(30, 31, 50, 0.98) !important;
+}
+
+.dl-pill-count {
+  background: rgba(99,102,241,0.2) !important;
+  border-radius: 10px !important;
+  padding: 0 6px !important;
+  font-size: 10px !important;
+}
+
+/* ── Scrollbar ───────────────────────────────────────────────────────────── */
+#__devlens_hud__ ::-webkit-scrollbar { width: 4px !important; }
+#__devlens_hud__ ::-webkit-scrollbar-track { background: transparent !important; }
+#__devlens_hud__ ::-webkit-scrollbar-thumb { background: rgba(99,102,241,0.3) !important; border-radius: 4px !important; }

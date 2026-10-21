@@ -1,0 +1,188 @@
+/* ── DevLens Popup ─────────────────────────────────────────────────────── */
+:root {
+  --pp-bg:      #0d0e15;
+  --pp-bg2:     #12131f;
+  --pp-bg3:     #1a1b2e;
+  --pp-border:  #2a2b3d;
+  --pp-text:    #d4d8f0;
+  --pp-muted:   #5c6080;
+  --pp-accent:  #6366f1;
+  --pp-adim:    rgba(99,102,241,0.14);
+  --pp-radius:  8px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  width: 260px;
+  background: var(--pp-bg);
+  color: var(--pp-text);
+  font-family: 'JetBrains Mono', 'Fira Code', ui-monospace, monospace;
+  font-size: 12px;
+}
+
+/* Header */
+.pp-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 11px 14px;
+  background: var(--pp-bg2);
+  border-bottom: 1px solid var(--pp-border);
+}
+.pp-logo {
+  font-weight: 800;
+  font-size: 14px;
+  color: var(--pp-accent);
+}
+.pp-version {
+  font-size: 10px;
+  color: var(--pp-muted);
+}
+
+/* Open panel button */
+.pp-open-btn-wrap {
+  padding: 10px 12px 6px;
+}
+.pp-open-panel {
+  width: 100%;
+  background: var(--pp-accent);
+  color: #fff;
+  border: none;
+  border-radius: var(--pp-radius);
+  padding: 8px 12px;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+.pp-open-panel:hover { opacity: 0.88; }
+
+/* Sections */
+.pp-section {
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--pp-border);
+}
+.pp-section-title {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--pp-muted);
+  margin-bottom: 6px;
+}
+.pp-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.pp-label { color: var(--pp-text); font-size: 12px; }
+
+/* Toggle switch */
+.pp-toggle { position: relative; display: inline-block; width: 36px; height: 20px; }
+.pp-toggle input { opacity: 0; width: 0; height: 0; }
+.pp-slider {
+  position: absolute; inset: 0;
+  background: var(--pp-bg3);
+  border-radius: 20px;
+  border: 1px solid var(--pp-border);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.pp-slider::before {
+  content: '';
+  position: absolute;
+  width: 14px; height: 14px;
+  left: 2px; top: 2px;
+  background: var(--pp-muted);
+  border-radius: 50%;
+  transition: transform 0.2s, background 0.2s;
+}
+.pp-toggle input:checked + .pp-slider { background: var(--pp-adim); border-color: var(--pp-accent); }
+.pp-toggle input:checked + .pp-slider::before { transform: translateX(16px); background: var(--pp-accent); }
+
+/* Grid 2 */
+.pp-grid2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5px;
+}
+.pp-pos-btn, .pp-theme-btn {
+  background: var(--pp-bg3);
+  border: 1px solid var(--pp-border);
+  border-radius: 6px;
+  color: var(--pp-muted);
+  font-family: inherit;
+  font-size: 11px;
+  padding: 5px 6px;
+  cursor: pointer;
+  transition: all 0.15s;
+  text-align: center;
+}
+.pp-pos-btn:hover, .pp-theme-btn:hover {
+  border-color: var(--pp-accent);
+  color: var(--pp-text);
+}
+.pp-pos-btn.active, .pp-theme-btn.active {
+  background: var(--pp-adim);
+  border-color: var(--pp-accent);
+  color: var(--pp-accent);
+  font-weight: 700;
+}
+
+/* Range */
+.pp-range {
+  width: 100%;
+  margin-top: 6px;
+  accent-color: var(--pp-accent);
+  cursor: pointer;
+}
+.pp-opacity-val { color: var(--pp-accent); font-weight: 700; font-size: 11px; }
+
+/* Checkboxes */
+.pp-checks {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5px 8px;
+}
+.pp-checks label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--pp-text);
+  cursor: pointer;
+  font-size: 11.5px;
+}
+.pp-checks input[type="checkbox"] { accent-color: var(--pp-accent); }
+
+/* Footer actions */
+.pp-footer-actions {
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--pp-border);
+}
+.pp-action-btn {
+  width: 100%;
+  background: none;
+  border: 1px solid var(--pp-border);
+  border-radius: 6px;
+  color: var(--pp-muted);
+  font-family: inherit;
+  font-size: 11.5px;
+  padding: 6px 10px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.pp-action-btn:hover {
+  border-color: #f87171;
+  color: #f87171;
+  background: rgba(248,113,113,0.08);
+}
+
+/* Footer */
+.pp-footer {
+  padding: 8px 12px;
+  text-align: center;
+  font-size: 10px;
+  color: var(--pp-muted);
+}
