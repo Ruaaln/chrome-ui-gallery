@@ -1,8 +1,12 @@
 # Automatic Gallery Catalog
 
-[← Main README](../README.md) · [Showcase HTML](./index.html) · [Contributor instructions](../CONTRIBUTING.md) · [Metadata specification](./CATALOG.md)
+[← Main README](../README.md) · [Browse tools](../Tools/README.md) · [DevLens](../Tools/devlens/README.md) · [Showcase HTML](./index.html) · [Contributor instructions](../CONTRIBUTING.md) · [Metadata specification](./CATALOG.md)
 
 **No manual HTML or JavaScript project arrays.** Every approved extension appears automatically.
+
+## Search indexing
+
+[Search Console and sitemap setup](./SEO.md) · [Published sitemap](https://ruslansharifov.github.io/chrome-ui-gallery/sitemap.xml).
 
 ## How updates work
 
@@ -13,6 +17,10 @@
 5. GitHub Pages shows the new card, search results, platform filters and updated project counts.
 
 Only **merged** projects appear. A Pull Request alone does not publish new code.
+
+## Example: accepted developer tool
+
+**[DevLens](../Tools/devlens/README.md)** is a merged example in [Tools/](../Tools/README.md). Its [manifest.json](../Tools/devlens/manifest.json) and [gallery.json](../Tools/devlens/gallery.json) demonstrate how the automatic catalog creates a tool card and source/documentation links without editing the website JavaScript.
 
 ## One-time Pages setup — required
 
@@ -61,3 +69,27 @@ Tools/
 ~~~
 
 No app.js edit and no hardcoded HTML counts. Security, copyright and privacy reviews remain necessary even when structural validation passes.
+
+## Download ZIP, contributors and filters
+
+- Every deployment builds `docs/downloads/<catalog-id>.zip` from the matching approved extension folder using [package-downloads.py](../scripts/package-downloads.py). ZIP files contain only that extension directory and are not committed to Git. The Download ZIP button requires a successful GitHub Pages deployment.
+- Contributors are fetched from GitHub's public repository contributor endpoint at runtime. API rate limits or network failures show a link to GitHub instead; counts are not fabricated.
+- Style filters and sorting use catalog metadata, and reset clears all filters. No contributor approval or extension permissions are changed.
+
+## Interactive visual effects
+
+The site includes a lightweight loading animation, scroll reveals, mouse-responsive 3D hero, particle background, dynamic logo and cursor glow. Effects live in [motion.js](./motion.js) and [styles.css](./styles.css). The illustrative Before / After section has been removed. Reduced-motion preferences disable these effects; touch devices skip pointer interactions.
+
+## Floating glass navigation
+
+The header uses two independently floating glassmorphism islands: a left brand island and a right GitHub/menu island. Scrolling condenses both islands into rounded pills. The three-dot control expands the right island to the left with staggered navigation links; its X control and Escape key close the menu. Outside clicks and navigation also close it. Keyboard focus and reduced-motion preferences are supported. See [header.js](./header.js), [index.html](./index.html), and [styles.css](./styles.css).
+
+## Pages (multi-page layout)
+
+- [index.html](./index.html) — particle-3D intro, the latest 6 repositories (`data-limit` on `#project-grid`), a **View all repositories** button, getting started, contributors and contribute call-to-action.
+- [gallery.html](./gallery.html) — every repository with category, platform and style filters, search and sorting. Supports `?category=ui|tool`, `?platform=chatgpt` and `?q=text`.
+- [hero.js](./hero.js) — canvas particle cube model for the intro (touch/pointer reactive, honors reduced-motion). [logo.svg](./logo.svg) / [favicon.svg](./favicon.svg) — the cube mark.
+- "Latest" order: an optional ISO `added` date on catalog entries; when absent, the last catalog entries count as newest.
+
+- [guide.html](./guide.html) — install / how it works / submit / metadata / local testing / maintainer setup / FAQ, with copy buttons and a sticky table of contents.
+- [bg.js](./bg.js) — shared dynamic background on every page: a drifting "git graph" (branch lanes, commit nodes, merge pulses, pointer glow) plus a soft animated aurora; disabled under reduced motion.
